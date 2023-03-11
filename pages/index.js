@@ -8,6 +8,7 @@ export default function Home() {
   const [positionInput, setPositionInput] = useState("");
   const [durationInput, setDurationInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
+  const [nameInput, setNameInput] = useState("");
   const [result, setResult] = useState();
 
   async function onSubmit(event) {
@@ -17,7 +18,8 @@ export default function Home() {
       !skillInput.trim() ||
       !positionInput.trim() ||
       !durationInput.trim() ||
-      !descriptionInput.trim()
+      !descriptionInput.trim() ||
+      !nameInput.trim()
     ) {
       alert("Please enter all the required fields");
       return;
@@ -34,6 +36,7 @@ export default function Home() {
           pastJobs: positionInput,
           duration: durationInput,
           jobDescription: descriptionInput,
+          name: nameInput,
         }),
       });
   
@@ -48,6 +51,7 @@ export default function Home() {
       setPositionInput("");
       setDurationInput("");
       setDescriptionInput("");
+      setNameInput("");
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -59,7 +63,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
+        <title>Cover Letter Generator</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main className={styles.main}>
@@ -100,6 +104,13 @@ export default function Home() {
             placeholder="Enter your past job description"
             value={descriptionInput}
             onChange={(e) => setDescriptionInput(e.target.value)}
+          />
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            value={nameInput}
+            onChange={(e) => setNameInput(e.target.value)}
           />
           <input type="submit" value="Generate cover letter" />
         </form>

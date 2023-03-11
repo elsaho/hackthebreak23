@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import OpenAI from './OpenAI';
 
 function App() {
+  const [message, setMessage] = useState('');
+  const [response, setResponse] = useState('');
+
+  function handleChange(event) {
+    setMessage(event.target.value);
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const prompt = message;
+    const model = 'text-davinci-002';
+    const temperature = 0.5;
+    const maxTokens = 100;
+    const response = await OpenAI.completions.create({ prompt, model, temperature, maxTokens });
+    const generatedText = response.choices[0].text;
+    setResponse(generatedText);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Message:
+            <input type="text" value={message} onChange={handleChange} />
+          </label>
+          <input type="submit" value="Send" />
+        </form>
+        <p>Response: {response}</p>
+      </div>
   );
 }
 

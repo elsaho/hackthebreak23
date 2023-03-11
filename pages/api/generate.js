@@ -15,11 +15,16 @@ export default async function (req, res) {
     return;
   }
 
-  const animal = req.body.animal || '';
-  if (animal.trim().length === 0) {
+  const jobTitle = req.body.jobTitle || '';
+  const skills = req.body.skills || '';
+  const pastJobs = req.body.pastJobs || '';
+  const duration = req.body.duration || '';
+  const jobDescription = req.body.jobDescription || '';
+
+  if (jobTitle.trim().length === 0 || skills.trim().length === 0 || pastJobs.trim().length === 0 || duration.trim().length === 0 || jobDescription.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: "Please enter a valid job",
+        message: "Please enter all the required fields",
       }
     });
     return;
@@ -28,7 +33,7 @@ export default async function (req, res) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(animal),
+      prompt: generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription),
       temperature: 0.99,
       max_tokens: 300,
     });
@@ -49,8 +54,18 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(animal) {
-  const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Write a cover letter for this job: ${capitalizedAnimal}.`;
+function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription) {
+  const prompt = `
+  Write a cover letter for this job: ${jobTitle}.
+
+  Required skills: ${skills}.
+
+  Past job positions: ${pastJobs}.
+
+  Duration: ${duration}.
+
+  Job description: ${jobDescription}.
+  `;
+
+  return prompt;
 }

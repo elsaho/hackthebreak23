@@ -3,33 +3,58 @@ import { useState } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const [animalInput, setAnimalInput] = useState("");
+  const [jobTitleInput, setJobTitleInput] = useState("");
+  const [skillInput, setSkillInput] = useState("");
+  const [positionInput, setPositionInput] = useState("");
+  const [durationInput, setDurationInput] = useState("");
+  const [descriptionInput, setDescriptionInput] = useState("");
   const [result, setResult] = useState();
 
   async function onSubmit(event) {
     event.preventDefault();
+    if (
+      !jobTitleInput.trim() ||
+      !skillInput.trim() ||
+      !positionInput.trim() ||
+      !durationInput.trim() ||
+      !descriptionInput.trim()
+    ) {
+      alert("Please enter all the required fields");
+      return;
+    }
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput }),
+        body: JSON.stringify({
+          jobTitle: jobTitleInput,
+          skills: skillInput,
+          pastJobs: positionInput,
+          duration: durationInput,
+          jobDescription: descriptionInput,
+        }),
       });
-
+  
       const data = await response.json();
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-
+  
       setResult(data.result);
-      setAnimalInput("");
-    } catch(error) {
+      setJobTitleInput("");
+      setSkillInput("");
+      setPositionInput("");
+      setDurationInput("");
+      setDescriptionInput("");
+    } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
     }
   }
+  
 
   return (
     <div>
@@ -43,10 +68,38 @@ export default function Home() {
         <form onSubmit={onSubmit}>
           <input
             type="text"
-            name="animal"
+            name="jobTitle"
             placeholder="Enter a job title"
-            value={animalInput}
-            onChange={(e) => setAnimalInput(e.target.value)}
+            value={jobTitleInput}
+            onChange={(e) => setJobTitleInput(e.target.value)}
+          />
+          <input
+            type="text"
+            name="skills"
+            placeholder="Enter your skills (comma-separated)"
+            value={skillInput}
+            onChange={(e) => setSkillInput(e.target.value)}
+          />
+          <input
+            type="text"
+            name="position"
+            placeholder="Enter your past job position"
+            value={positionInput}
+            onChange={(e) => setPositionInput(e.target.value)}
+          />
+          <input
+            type="text"
+            name="duration"
+            placeholder="Enter your past job duration"
+            value={durationInput}
+            onChange={(e) => setDurationInput(e.target.value)}
+          />
+          <input
+            type="text"
+            name="description"
+            placeholder="Enter your past job description"
+            value={descriptionInput}
+            onChange={(e) => setDescriptionInput(e.target.value)}
           />
           <input type="submit" value="Generate cover letter" />
         </form>

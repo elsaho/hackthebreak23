@@ -60,10 +60,10 @@ export default function Home() {
     <div>
       <Head>
         <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/dog.png" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main className={styles.main}>
-        <img src="/dog.png" className={styles.icon} />
+        <img src="/cowboyemoji.png" className={styles.icon} />
         <h3>Cover Letter Generator</h3>
         <form onSubmit={onSubmit}>
           <input

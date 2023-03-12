@@ -170,7 +170,7 @@ function onSurpriseClick() {
         <StringToPDF stringToConvert= {result}/>
         
       </main>
-      
+      {/* <StringToPDF stringToConvert= {result}/> */}
     </div>
   );
 }

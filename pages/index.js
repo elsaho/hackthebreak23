@@ -87,7 +87,8 @@ function randomJobTitle() {
 }
 
 function randomSkill() {
-  const skills = ["Multi-tasking", "Being organized", "Juggling", "Java", "C", "Python", "Running really fast"];
+  const skills = ["Multi-tasking", "Being organized", "Juggling", "Java", "C", "Python", "Running really fast",
+"Eating a lot of food"];
   const randomIndex = Math.floor(Math.random() * skills.length);
   return skills[randomIndex];
 }
@@ -105,13 +106,13 @@ function randomDuration() {
 }
 
 function randomDescription() {
-  const description = ["Team leader", "Tried not to break anything", "Kept operations running"];
+  const description = ["Team leader", "Tried not to break anything", "Kept operations running", "Linked list master"];
   const randomIndex = Math.floor(Math.random() * description.length);
   return description[randomIndex];
 }
 
 function randomName() {
-  const name = ["Elsa", "Mai", "Cyrus", "Nico", "Tomek", "Justin", "Trevor"];
+  const name = ["Elsa", "Mai", "Cyrus", "Nico", "Tomek", "Justin", "Trevor", "Troy", "Kate", "Haurence", "Turtino"];
   const randomIndex = Math.floor(Math.random() * name.length);
   return name[randomIndex];
 }

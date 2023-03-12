@@ -27,19 +27,7 @@ class StringToPDF extends React.Component {
     const fontSize = 12;
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
     const stringToConvert = this.state.stringToConvert.replace(/\n/g, '\u00A0');
-    const maxWidth = 500; // set the maximum width for the text
-    const lines = font.layout(stringToConvert, { fontSize, maxWidth });
-    const textHeight = lines.reduce((height, line) => height + line.height, 0);
-    let y = (height - textHeight) / 2;
-    for (const line of lines) {
-      page.drawText(line.text, {
-        x: (width - line.width) / 2,
-        y,
-        size: fontSize,
-        font: font,
-      });
-      y -= line.height;
-    }
+    const textWidth = font.widthOfTextAtSize(stringToConvert, fontSize);
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
     saveAs(blob, 'output.pdf');

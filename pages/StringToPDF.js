@@ -2,6 +2,7 @@ import React from 'react';
 import { PDFDocument, StandardFonts } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 import styles from "./StringToPdf.module.css";
+import TextareaAutosize from 'react-textarea-autosize';
 
 class StringToPDF extends React.Component {
   constructor(props) {
@@ -95,8 +96,8 @@ class StringToPDF extends React.Component {
 
   render() {
     return (
-      <div style={{ textAlign: 'center' }}>
-        <textarea value={this.state.stringToConvert} onChange={this.handleStringChange} rows="15" cols="100"/>
+      <div className={styles.container}>
+        <TextareaAutosize className={styles.textbox} value={this.state.stringToConvert} onChange={this.handleStringChange} cols="100"/>
         <br />
         <input className={styles['main input[type="submit"]']} type="submit" value="Download as PDF" onClick={this.handleDownloadPDF} />
       </div>

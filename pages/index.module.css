@@ -52,7 +52,6 @@
 .main ::placeholder {
   color: #8e8ea0;
   opacity: 1;
-
 }
 .main input[type="submit"] {
   padding: 12px 0;
@@ -63,14 +62,13 @@
   text-align: center;
   cursor: pointer;
 }
+
 .main input[type="submit"]:hover {
-  padding: 12px 0;
-  color: #FFFFF0;
-  background-color: #3118b9;
-  border: none;
-  border-radius: 4px;
-  text-align: center;
-  cursor: pointer;
+  background-color: #6da0af;
+}
+
+.main input[type="submit"]:active {
+  background-color: #42626F;
 }
 
 .main .result {

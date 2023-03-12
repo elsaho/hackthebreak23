@@ -1,4 +1,4 @@
-.main input[type="button"] {
+.main input[type="submit"] {
     padding: 12px 0;
     color: #FFFFF0;
     background-color: #95C8D8;
@@ -6,14 +6,13 @@
     border-radius: 4px;
     text-align: center;
     cursor: pointer;
-    width: 320px;
   }
   
-  .main input[type="button"]:hover {
+  .main input[type="submit"]:hover {
     background-color: #6da0af;
   }
   
-  .main input[type="button"]:active {
+  .main input[type="submit"]:active {
     background-color: #42626F;
   }
   

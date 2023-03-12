@@ -97,7 +97,7 @@ class StringToPDF extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        <TextareaAutosize className={styles.textbox} value={this.state.stringToConvert} onChange={this.handleStringChange} cols="100"/>
+        <TextareaAutosize className={styles.textbox} value={this.state.stringToConvert} onChange={this.handleStringChange} cols='65' />
         <br />
         <input className={styles['main input[type="submit"]']} type="submit" value="Download as PDF" onClick={this.handleDownloadPDF} />
       </div>

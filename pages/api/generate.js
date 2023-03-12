@@ -57,8 +57,7 @@ export default async function (req, res) {
 }
 
 export function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name) {
-  const prompt = `
-  Write a cover letter for this job: ${jobTitle}.
+  const prompt = `Write a cover letter for this job: ${jobTitle}.
 
   Required skills: ${skills}.
 
@@ -73,5 +72,5 @@ export function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescript
   Address it to Hiring Manager and make it a little more unique.
   `;
 
-  return `<div class="result">${prompt}</div>`;
+  return prompt;
 }

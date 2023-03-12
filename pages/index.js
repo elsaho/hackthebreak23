@@ -46,8 +46,25 @@ export default function Home() {
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
+      function removeNewlineBeforeWords(s) {
+        // Define pattern to match newline character before words
+        const pattern = /^[\n]+([A-Za-z])/;
+      
+        // Replace matched pattern with the first letter of the word
+        return s.replace(pattern, '$1');
+      }
+      function removeNewlineAfterWords(s) {
+        // Define pattern to match newline character after words
+        const pattern = /([A-Za-z])[ \t]*[\n]+/g;
+      
+        // Replace matched pattern with the first letter of the word
+        return s.replace(pattern, '$1 ');
+      }
+      
   
-      setResult(data.result);
+      setResult(removeNewlineAfterWords(
+        removeNewlineBeforeWords(
+          data.result.trim())));
       setJobTitleInput("");
       setSkillInput("");
       setPositionInput("");
@@ -110,6 +127,7 @@ function onSurpriseClick() {
 
 
 
+
   return (
       // <div style={{backgroundColor: '#FFFFF0'}}>
       <div>
@@ -165,7 +183,6 @@ function onSurpriseClick() {
           />
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
           <input type="submit" value="Generate cover letter"/>
-          {/* <StringToPDF stringToConvert= {result}/> */}
         </form>
         <StringToPDF stringToConvert= {result}/>
         

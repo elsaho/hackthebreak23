@@ -16,5 +16,9 @@
   .main input[type="submit"]:active {
     background-color: #42626F;
   }
+
+.container{
+  text-align: center;
+}
   
   

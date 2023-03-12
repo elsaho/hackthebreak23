@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
+import StringToPDFAndWord from './StringToPDF';
 
 export default function Home() {
   const [jobTitleInput, setJobTitleInput] = useState("");
@@ -162,6 +163,7 @@ function onSurpriseClick() {
           <br></br>
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
         </form>
+        <StringToPDFAndWord />
         <div className={styles.result}>{result}</div>
       </main>
     </div>

@@ -6,8 +6,14 @@ class StringToPDF extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stringToConvert: '',
+      stringToConvert: this.props.stringToConvert || '',
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.stringToConvert !== prevProps.stringToConvert) {
+      this.setState({ stringToConvert: this.props.stringToConvert });
+    }
   }
 
   handleStringChange = (event) => {
@@ -32,16 +38,6 @@ class StringToPDF extends React.Component {
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
     saveAs(blob, 'output.pdf');
-  }
-
-  handleDownloadWord = () => {
-    const doc = new Document();
-    doc.addSection({
-      children: [new Paragraph(this.state.stringToConvert)],
-    });
-    Packer.toBlob(doc).then((blob) => {
-      saveAs(blob, 'output.docx');
-    });
   }
 
   render() {

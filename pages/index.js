@@ -179,8 +179,8 @@ function Icon(props) {
       </Head>
       <main className={styles.main}>
         <Icon
-          src="./favicon-32x32.png"
-          className="cowboy"
+          src="./cowboyemoji.png"
+          className={styles.cowboy}
           alt="cowboy emoji"
         />
         <h3>Cover Letter Generator</h3>

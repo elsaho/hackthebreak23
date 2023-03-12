@@ -109,7 +109,8 @@ function onSurpriseClick() {
 
 
   return (
-    <div>
+      // <div style={{backgroundColor: '#FFFFF0'}}>
+      <div>
       <Head>
         <title>Cover Letter Generator</title>
         <link rel="icon" href="/favicon.png" />
@@ -160,7 +161,7 @@ function onSurpriseClick() {
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
           />
-          <input type="submit" value="Surprise me!" onClick={onSurpriseClick} />
+          <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
           <br></br>
           <input type="submit" value="Generate cover letter"/>
         </form>

@@ -32,7 +32,7 @@ class StringToPDF extends React.Component {
     let lines = this.state.stringToConvert.split('\n');
   
     let currentPage = pdfDoc.addPage();
-    let cursor = { x: margin, y: pageHeight - margin };
+    let cursor = { x: margin, y: pageHeight - margin + 36}; // 36 to modify the margins
   
     for (let i = 0; i < lines.length; i++) {
       const words = lines[i].split(' ');
@@ -50,7 +50,7 @@ class StringToPDF extends React.Component {
         if (cursor.y < margin) {
           // Move to next page
           currentPage = pdfDoc.addPage();
-          cursor = { x: margin, y: pageHeight - margin };
+          cursor = { x: margin, y: pageHeight - margin + 36}; // 36 to modify the margins
         }
   
         currentPage.drawText(word, { x: cursor.x, y: cursor.y, size: 12, font });

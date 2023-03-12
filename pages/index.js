@@ -58,7 +58,53 @@ export default function Home() {
       alert(error.message);
     }
   }
-  
+
+//Randomizer: Generate random job title
+function randomJobTitle() {
+  const jobTitles = ["Software Engineer", "Piano Teacher", "Guest Experience Expert", "Baker", "Pro Gamer"];
+  const randomIndex = Math.floor(Math.random() * jobTitles.length);
+  return jobTitles[randomIndex];
+}
+
+function randomSkill() {
+  const skills = ["Multi-tasking", "Being organized", "Juggling", "Java", "C"];
+  const randomIndex = Math.floor(Math.random() * skills.length);
+  return skills[randomIndex];
+}
+
+function randomPosition() {
+  const position = ["Student", "Tutor", "Freelancer"];
+  const randomIndex = Math.floor(Math.random() * position.length);
+  return position[randomIndex];
+}
+
+function randomDuration() {
+  const duration = ["1 year", "3 months", "5 years"];
+  const randomIndex = Math.floor(Math.random() * duration.length);
+  return duration[randomIndex];
+}
+
+function randomDescription() {
+  const description = ["Team leader", "Tried not to break anything"];
+  const randomIndex = Math.floor(Math.random() * description.length);
+  return description[randomIndex];
+}
+
+function randomName() {
+  const name = ["Elsa", "Mai", "Cyrus", "Nico", "Tomek", "Justin", "Trevor"];
+  const randomIndex = Math.floor(Math.random() * name.length);
+  return name[randomIndex];
+}
+
+function onSurpriseClick() {
+  setJobTitleInput(randomJobTitle);
+  setSkillInput(randomSkill);
+  setPositionInput(randomPosition);
+  setDurationInput(randomDuration);
+  setDescriptionInput(randomDescription);
+  setNameInput(randomName);
+}
+
 
   return (
     <div>
@@ -112,7 +158,9 @@ export default function Home() {
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
           />
-          <input type="submit" value="Generate cover letter" />
+          <input type="button" value="Generate cover letter" />
+          <br></br>
+          <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
         </form>
         <div className={styles.result}>{result}</div>
       </main>

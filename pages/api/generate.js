@@ -21,6 +21,7 @@ export default async function (req, res) {
   const duration = req.body.duration || '';
   const jobDescription = req.body.jobDescription || '';
   const name = req.body.name || '';
+  const scrapedJob = '';
 
   if (jobTitle.trim().length === 0 || skills.trim().length === 0 || pastJobs.trim().length === 0 
   || duration.trim().length === 0 || jobDescription.trim().length === 0 || name.trim().length === 0) {
@@ -35,7 +36,7 @@ export default async function (req, res) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name),
+      prompt: generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name, scrapedJob),
       temperature: 0.99,
       max_tokens: 300,
     });
@@ -56,7 +57,7 @@ export default async function (req, res) {
   }
 }
 
-export function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name) {
+export function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name, scrapedJob) {
   const prompt = `Write a cover letter for this job: ${jobTitle}.
 
   Required skills: ${skills}.
@@ -65,7 +66,7 @@ export function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescript
 
   Duration: ${duration}.
 
-  Job description: ${jobDescription}.
+  Job description: ${jobDescription} + ${scrapedJob}.
 
   Please sign off the cover letter with ${name}.
 

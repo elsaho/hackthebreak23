@@ -6,7 +6,7 @@
 @media (max-width: 767px) {
   /* Styles for small devices */
   .textbox{
-    width: 50%;
+    width: 320px;
   }
 }
 

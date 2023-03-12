@@ -102,14 +102,14 @@
 }
 
 .icon {
-  animation: spin 6s linear;
+  animation: spin 0.5s infinite linear;
 }
 
 @keyframes spin {
   from {
     transform: rotate(0deg);
   } to {
-    transform: rotate(1080deg);
+    transform: rotate(360deg);
   }
 }
 

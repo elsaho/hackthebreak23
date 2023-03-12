@@ -112,7 +112,7 @@ function onSurpriseClick() {
 
   return (
       // <div style={{backgroundColor: '#FFFFF0'}}>
-      <div id="all" style={{backgroundColor: '#FFFFF0'}}>
+      <div>
       <Head>
         <title>Cover Letter Generator</title>
         <link rel="icon" href="/favicon.png" />
@@ -174,4 +174,3 @@ function onSurpriseClick() {
     </div>
   );
 }
-

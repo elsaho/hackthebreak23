@@ -1,6 +1,7 @@
 import React from 'react';
 import { PDFDocument, StandardFonts } from 'pdf-lib';
 import { saveAs } from 'file-saver';
+import styles from "./StringToPdf.module.css";
 
 class StringToPDF extends React.Component {
   constructor(props) {
@@ -22,9 +23,6 @@ class StringToPDF extends React.Component {
 
   handleDownloadPDF = async () => {
     const pdfDoc = await PDFDocument.create();
-    const page = pdfDoc.addPage();
-    const { width, height } = page.getSize();
-    const fontSize = 12;
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   
     const pageWidth = 612; // 8.5 inches in points

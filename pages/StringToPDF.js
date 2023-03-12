@@ -28,11 +28,14 @@ class StringToPDF extends React.Component {
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
     const stringToConvert = this.state.stringToConvert.replace(/\n/g, '\u00A0');
     const textWidth = font.widthOfTextAtSize(stringToConvert, fontSize);
+    const textHeight = font.heightAtSize(fontSize);
+    const x = (width - textWidth) / 2;
+    const y = (height - textHeight) / 2;
+    page.drawText(stringToConvert, { x, y, size: fontSize, font });
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
     saveAs(blob, 'output.pdf');
   }
-  
 
   render() {
     return (

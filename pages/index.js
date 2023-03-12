@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./index.module.css";
 import StringToPDF from './StringToPDF';
 
+
 export default function Home() {
   const [jobTitleInput, setJobTitleInput] = useState("");
   const [skillInput, setSkillInput] = useState("");

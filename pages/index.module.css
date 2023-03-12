@@ -53,7 +53,7 @@
   color: #8e8ea0;
   opacity: 1;
 }
-.main input[type="submit"] {
+.main input[type="button"] {
   padding: 12px 0;
   color: #FFFFF0;
   background-color: #95C8D8;
@@ -63,11 +63,11 @@
   cursor: pointer;
 }
 
-.main input[type="submit"]:hover {
+.main input[type="button"]:hover {
   background-color: #6da0af;
 }
 
-.main input[type="submit"]:active {
+.main input[type="button"]:active {
   background-color: #42626F;
 }
 

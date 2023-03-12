@@ -20,8 +20,10 @@ export default async function (req, res) {
   const pastJobs = req.body.pastJobs || '';
   const duration = req.body.duration || '';
   const jobDescription = req.body.jobDescription || '';
+  const name = req.body.name || '';
 
-  if (jobTitle.trim().length === 0 || skills.trim().length === 0 || pastJobs.trim().length === 0 || duration.trim().length === 0 || jobDescription.trim().length === 0) {
+  if (jobTitle.trim().length === 0 || skills.trim().length === 0 || pastJobs.trim().length === 0 
+  || duration.trim().length === 0 || jobDescription.trim().length === 0 || name.trim().length === 0) {
     res.status(400).json({
       error: {
         message: "Please enter all the required fields",
@@ -33,7 +35,7 @@ export default async function (req, res) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription),
+      prompt: generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name),
       temperature: 0.99,
       max_tokens: 300,
     });
@@ -54,7 +56,17 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription) {
+// //Randomizer: Generate random job title
+// function randomJobTitle() {
+//   const jobTitles = ["Software Engineer", "Piano Teacher", "Guest Experience Expert"];
+//   const randomIndex = Math.floor(Math.random() * jobTitles.length);
+//   return jobTitles[randomIndex];
+// }
+
+// // Use the randomJobTitle function in your onSubmit handler to set the default value
+// const [jobTitleInput, setJobTitleInput] = useState(randomJobTitle());
+
+function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name) {
   const prompt = `
   Write a cover letter for this job: ${jobTitle}.
 
@@ -65,7 +77,10 @@ function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription) {
   Duration: ${duration}.
 
   Job description: ${jobDescription}.
+
+  Please sign off the cover letter with ${name}.
   `;
 
   return prompt;
 }
+

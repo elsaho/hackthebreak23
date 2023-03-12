@@ -1,6 +1,7 @@
 import React from 'react';
 import { PDFDocument, StandardFonts } from 'pdf-lib';
 import { saveAs } from 'file-saver';
+import styles from "./StringToPdf.module.css";
 
 class StringToPDF extends React.Component {
   constructor(props) {
@@ -22,9 +23,6 @@ class StringToPDF extends React.Component {
 
   handleDownloadPDF = async () => {
     const pdfDoc = await PDFDocument.create();
-    const page = pdfDoc.addPage();
-    const { width, height } = page.getSize();
-    const fontSize = 12;
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   
     const pageWidth = 612; // 8.5 inches in points
@@ -69,15 +67,42 @@ class StringToPDF extends React.Component {
     saveAs(blob, 'output.pdf');
   }
   
+  
+
+  // handleDownloadPDF = async () => {
+  //   const pdfDoc = await PDFDocument.create();
+  //   const page = pdfDoc.addPage();
+  //   const { width, height } = page.getSize();
+  //   const fontSize = 12;
+  //   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+  //   const stringToConvert = this.state.stringToConvert.replace(/\n/g, '\u00A0');
+  //   const textLines = stringToConvert.split('\n');
+  //   const lineHeight = 1.2 * fontSize; // adjust line height as desired
+  //   const x = 30; // adjust x-coordinate as desired
+  //   let y = height - 50; // adjust y-coordinate as desired
+  
+  //   for (let i = 0; i < textLines.length; i++) {
+  //     const line = textLines[i];
+  //     const textWidth = font.widthOfTextAtSize(line, fontSize);
+  //     page.drawText(line, { x, y, size: fontSize, font });
+  //     y -= lineHeight;
+  //   }
+  
+  //   const pdfBytes = await pdfDoc.save();
+  //   const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+  //   saveAs(blob, 'output.pdf');
+  // }
 
   render() {
     return (
-      <div>
-        <textarea value={this.state.stringToConvert} onChange={this.handleStringChange} />
-        <button onClick={this.handleDownloadPDF}>Download as PDF</button>
+      <div style={{ textAlign: 'center' }}>
+        <textarea value={this.state.stringToConvert} onChange={this.handleStringChange} rows="15" cols="100"/>
+        <br />
+        <input className={styles['main input[type="submit"]']} type="submit" value="Download as PDF" onClick={this.handleDownloadPDF} />
       </div>
     );
   }
+  
 }
 
 export default StringToPDF;

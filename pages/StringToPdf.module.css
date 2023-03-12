@@ -1,0 +1,18 @@
+.main input[type="button"] {
+    padding: 12px 0;
+    color: #FFFFF0;
+    background-color: #95C8D8;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .main input[type="button"]:hover {
+    background-color: #6da0af;
+  }
+  
+  .main input[type="button"]:active {
+    background-color: #42626F;
+  }
+  

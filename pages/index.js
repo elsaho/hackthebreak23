@@ -165,8 +165,10 @@ function onSurpriseClick() {
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
           <br></br>
           <input type="submit" value="Generate cover letter"/>
+          <br></br>
+          <StringToPDFAndWord text= {result}/>
         </form>
-        <StringToPDFAndWord />
+        
         <div className={styles.result}>{result}</div>
       </main>
     </div>

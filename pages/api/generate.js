@@ -56,7 +56,7 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name) {
+export function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name) {
   const prompt = `
   Write a cover letter for this job: ${jobTitle}.
 

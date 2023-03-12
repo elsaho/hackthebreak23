@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./index.module.css";
 import StringToPDF from './StringToPDF';
 
+
 export default function Home() {
   const [jobTitleInput, setJobTitleInput] = useState("");
   const [skillInput, setSkillInput] = useState("");
@@ -165,9 +166,12 @@ function onSurpriseClick() {
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
           <br></br>
           <input type="submit" value="Generate cover letter"/>
+          <br></br>
+          {/* <StringToPDF stringToConvert= {result}/> */}
         </form>
         <br></br>
         <StringToPDF stringToConvert= {result}/>
+        
       </main>
       
     </div>

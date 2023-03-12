@@ -228,11 +228,7 @@ function Icon(props) {
             onChange={(e) => setNameInput(e.target.value)}
           />
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
-<<<<<<< HEAD
           <input type="submit" value="Yeehaw, let's go!"/>
-=======
-          <input type="submit" value="Yeehaw"/>
->>>>>>> 566c2f2f5f036bcf691c0b3b35f3053e475745f2
         </form>
         <StringToPDF stringToConvert={result} />
       </main>

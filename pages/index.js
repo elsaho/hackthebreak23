@@ -164,14 +164,11 @@ export default function Home() {
     setNameInput(randomName());
   }
 
-  function Icon(props) {
-    const className = isButtonClicked
-      ? `index_icon__CgRrC icon`
-      : props.className;
-    return (
-      <img src={props.src} id="cowboy" className={className} alt={props.alt} />
-    );
-  }
+function Icon(props) {
+  const className = isButtonClicked ? `index_icon__CgRrC icon` : props.className;
+  return <img src={props.src} id="cowboy" className={className} alt={props.alt} />;
+}
+
 
   return (
     // <div style={{backgroundColor: '#FFFFF0'}}>
@@ -182,7 +179,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Icon
-          src="https://cdn.discordapp.com/attachments/1030235742963769366/1084359941583814696/favicon-32x32.png"
+          src="./favicon-32x32.png"
           className="cowboy"
           alt="cowboy emoji"
         />

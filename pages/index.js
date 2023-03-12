@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
-import StringToPDFAndWord from './StringToPDF';
+import StringToPDF from './StringToPDF';
 
 export default function Home() {
   const [jobTitleInput, setJobTitleInput] = useState("");
@@ -168,8 +168,7 @@ function onSurpriseClick() {
           <br></br>
           <StringToPDFAndWord text= {result}/>
         </form>
-        
-        <div className={styles.result}>{result}</div>
+        <StringToPDF stringToConvert= {result}/>
       </main>
     </div>
   );

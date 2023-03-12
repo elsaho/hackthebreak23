@@ -6,8 +6,14 @@ class StringToPDF extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      stringToConvert: '',
+      stringToConvert: this.props.stringToConvert || '',
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.stringToConvert !== prevProps.stringToConvert) {
+      this.setState({ stringToConvert: this.props.stringToConvert });
+    }
   }
 
   handleStringChange = (event) => {
@@ -21,28 +27,21 @@ class StringToPDF extends React.Component {
     const fontSize = 12;
     const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
     const stringToConvert = this.state.stringToConvert;
-    const textWidth = font.widthOfTextAtSize(stringToConvert, fontSize);
+    const lines = stringToConvert.split('\n');
     const textHeight = font.heightAtSize(fontSize);
-    page.drawText(stringToConvert, {
-      x: (width - textWidth) / 2,
-      y: (height - textHeight) / 2,
-      size: fontSize,
-      font: font,
+    const yStart = height - textHeight - 50; // adjust y position as needed
+    let y = yStart;
+    lines.forEach((line) => {
+      const textWidth = font.widthOfTextAtSize(line, fontSize);
+      const x = (width - textWidth) / 2;
+      page.drawText(line, { x, y, size: fontSize, font });
+      y -= textHeight;
     });
     const pdfBytes = await pdfDoc.save();
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
     saveAs(blob, 'output.pdf');
   }
-
-  handleDownloadWord = () => {
-    const doc = new Document();
-    doc.addSection({
-      children: [new Paragraph(this.state.stringToConvert)],
-    });
-    Packer.toBlob(doc).then((blob) => {
-      saveAs(blob, 'output.docx');
-    });
-  }
+  
 
   render() {
     return (

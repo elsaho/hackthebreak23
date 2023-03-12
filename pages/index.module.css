@@ -32,7 +32,7 @@
   height: 100%;
 }
 .main .icon {
-  width: 34px;
+  width: 32px;
 }
 .main h3 {
   font-size: 32px;
@@ -101,4 +101,18 @@
   margin-top: 40px;
 }
 
+.icon {
+  animation: spin 6s linear;
+}
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(1080deg);
+  }
+}
+
+/* .main .cowboy {
+  width: 34px;
+} */

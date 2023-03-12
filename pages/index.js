@@ -12,9 +12,11 @@ export default function Home() {
   const [descriptionInput, setDescriptionInput] = useState("");
   const [nameInput, setNameInput] = useState("");
   const [result, setResult] = useState();
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   async function onSubmit(event) {
     event.preventDefault();
+    setIsButtonClicked(true); // Set the button clicked state to true
     if (
       !jobTitleInput.trim() ||
       !skillInput.trim() ||
@@ -128,15 +130,25 @@ function onSurpriseClick() {
 
 
 
-  return (
-      // <div style={{backgroundColor: '#FFFFF0'}}>
-      <div>
-      <Head>
-        <title>Cover Letter Generator</title>
-        <link rel="icon" href="/favicon.png" />
-      </Head>
-      <main className={styles.main}>
-        <img src="/cowboyemoji.png" className={styles.icon} />
+function Icon(props) {
+  const className = isButtonClicked ? `index_icon__CgRrC icon` : props.className;
+  return <img src={props.src} id="cowboy" className={className} alt={props.alt} />;
+}
+
+
+return (
+  // <div style={{backgroundColor: '#FFFFF0'}}>
+  <div>
+    <Head>
+      <title>Cover Letter Generator</title>
+      <link rel="icon" href="/favicon.png" />
+    </Head>
+    <main className={styles.main}>
+      <Icon
+        src="https://cdn.discordapp.com/attachments/1030235742963769366/1084359941583814696/favicon-32x32.png"
+        className="cowboy"
+        alt="cowboy emoji"
+      />
         <h3>Cover Letter Generator</h3>
         <form onSubmit={onSubmit}>
           <input

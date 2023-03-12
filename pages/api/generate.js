@@ -69,6 +69,8 @@ export function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescript
   Job description: ${jobDescription}.
 
   Please sign off the cover letter with ${name}.
+
+  Address it to Hiring Manager and make it a little more unique.
   `;
 
   return `<div class="result">${prompt}</div>`;

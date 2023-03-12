@@ -195,12 +195,11 @@ return (
             onChange={(e) => setNameInput(e.target.value)}
           />
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
-          <input type="submit" value="Generate cover letter"/>
+          <input type="submit" value="Yeehaw"/>
         </form>
         <StringToPDF stringToConvert= {result}/>
         
       </main>
-      {/* <StringToPDF stringToConvert= {result}/> */}
     </div>
   );
 }

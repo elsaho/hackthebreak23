@@ -133,7 +133,7 @@ function onSurpriseClick() {
           <input
             type="text"
             name="position"
-            placeholder="Enter your past job position"
+            placeholder="Enter your past job positions"
             value={positionInput}
             onChange={(e) => setPositionInput(e.target.value)}
           />
@@ -147,7 +147,7 @@ function onSurpriseClick() {
           <input
             type="text"
             name="description"
-            placeholder="Enter your past job description"
+            placeholder="Enter your job description"
             value={descriptionInput}
             onChange={(e) => setDescriptionInput(e.target.value)}
           />

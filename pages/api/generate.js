@@ -56,25 +56,6 @@ export default async function (req, res) {
   }
 }
 
-//Randomizer: Generate random job title
-function randomJobTitle() {
-  const jobTitles = ["Software Engineer", "Piano Teacher", "Guest Experience Expert"];
-  const randomIndex = Math.floor(Math.random() * jobTitles.length);
-  return jobTitles[randomIndex];
-}
-
-function onSurpriseClick() {
-  setJobTitleInput(randomJobTitle);
-  setSkillInput("Random skills");
-  setPositionInput("Random position");
-  setDurationInput("Random duration");
-  setDescriptionInput("Random job description");
-  setNameInput("Random name");
-}
-
-// Use the randomJobTitle function in your onSubmit handler to set the default value
-const [jobTitleInput, setJobTitleInput] = useState(randomJobTitle());
-
 function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, name) {
   const prompt = `
   Write a cover letter for this job: ${jobTitle}.
@@ -92,4 +73,3 @@ function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, na
 
   return prompt;
 }
-

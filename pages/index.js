@@ -60,15 +60,16 @@ export default function Home() {
     }
   }
 
-//Randomizer: Generate random job title
+// Randomizer: Generate random job title
 function randomJobTitle() {
-  const jobTitles = ["Software Engineer", "Piano Teacher", "Guest Experience Expert", "Baker", "Pro Gamer"];
+  const jobTitles = ["Software Engineer", "Piano Teacher", "Guest Experience Expert", "Baker", "Pro Gamer",
+"Swim Instructor", "Painter", "Comedian"];
   const randomIndex = Math.floor(Math.random() * jobTitles.length);
   return jobTitles[randomIndex];
 }
 
 function randomSkill() {
-  const skills = ["Multi-tasking", "Being organized", "Juggling", "Java", "C"];
+  const skills = ["Multi-tasking", "Being organized", "Juggling", "Java", "C", "Python", "Running really fast"];
   const randomIndex = Math.floor(Math.random() * skills.length);
   return skills[randomIndex];
 }
@@ -80,13 +81,13 @@ function randomPosition() {
 }
 
 function randomDuration() {
-  const duration = ["1 year", "3 months", "5 years"];
+  const duration = ["1 year", "3 months", "5 years", "6 months"];
   const randomIndex = Math.floor(Math.random() * duration.length);
   return duration[randomIndex];
 }
 
 function randomDescription() {
-  const description = ["Team leader", "Tried not to break anything"];
+  const description = ["Team leader", "Tried not to break anything", "Kept operations running"];
   const randomIndex = Math.floor(Math.random() * description.length);
   return description[randomIndex];
 }
@@ -98,17 +99,19 @@ function randomName() {
 }
 
 function onSurpriseClick() {
-  setJobTitleInput(randomJobTitle);
-  setSkillInput(randomSkill);
-  setPositionInput(randomPosition);
-  setDurationInput(randomDuration);
-  setDescriptionInput(randomDescription);
-  setNameInput(randomName);
+  setJobTitleInput(randomJobTitle());
+  setSkillInput(randomSkill());
+  setPositionInput(randomPosition());
+  setDurationInput(randomDuration());
+  setDescriptionInput(randomDescription());
+  setNameInput(randomName());
 }
 
 
+
   return (
-    <div>
+      // <div style={{backgroundColor: '#FFFFF0'}}>
+      <div>
       <Head>
         <title>Cover Letter Generator</title>
         <link rel="icon" href="/favicon.png" />
@@ -159,9 +162,9 @@ function onSurpriseClick() {
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
           />
-          <input type="button" value="Generate cover letter" />
-          <br></br>
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
+          <br></br>
+          <input type="submit" value="Generate cover letter"/>
         </form>
         <StringToPDFAndWord />
         <div className={styles.result}>{result}</div>

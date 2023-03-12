@@ -65,6 +65,7 @@
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
+  margin-bottom: 16px;
 }
 
 .main input[type="button"]:hover {
@@ -83,6 +84,7 @@
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
+  margin-bottom: 16px;
 }
 
 .main input[type="submit"]:hover {

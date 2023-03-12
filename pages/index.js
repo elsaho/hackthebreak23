@@ -160,7 +160,7 @@ function onSurpriseClick() {
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
           />
-          <input type="submit" value="Surprise me!" onClick={onSurpriseClick} />
+          <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
           <br></br>
           <input type="submit" value="Generate cover letter"/>
         </form>

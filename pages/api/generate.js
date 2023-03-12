@@ -81,5 +81,5 @@ function generatePrompt(jobTitle, skills, pastJobs, duration, jobDescription, na
   Please sign off the cover letter with ${name}.
   `;
 
-  return prompt;
+  return `<div class="result">${prompt}</div>`;
 }

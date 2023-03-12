@@ -92,19 +92,17 @@ class StringToPDF extends React.Component {
   //   const blob = new Blob([pdfBytes], { type: 'application/pdf' });
   //   saveAs(blob, 'output.pdf');
   // }
-  
-  
 
   render() {
     return (
-      <div>
-        <textarea value={this.state.stringToConvert} onChange={this.handleStringChange} />
-        <br></br>
-        {/* <input className={styles.button} type="submit" value="Download as PDF" onClick={this.handleDownloadPDF} /> */}
+      <div style={{ textAlign: 'center' }}>
+        <textarea value={this.state.stringToConvert} onChange={this.handleStringChange} rows="15" cols="100"/>
+        <br />
         <input className={styles['main input[type="submit"]']} type="submit" value="Download as PDF" onClick={this.handleDownloadPDF} />
       </div>
     );
   }
+  
 }
 
 export default StringToPDF;

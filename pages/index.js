@@ -165,11 +165,12 @@ function onSurpriseClick() {
           />
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
           <input type="submit" value="Generate cover letter"/>
-          <StringToPDF stringToConvert= {result}/>
+          {/* <StringToPDF stringToConvert= {result}/> */}
         </form>
-        {/* <StringToPDF stringToConvert= {result}/> */}
+        <StringToPDF stringToConvert= {result}/>
         
       </main>
+      {/* <StringToPDF stringToConvert= {result}/> */}
     </div>
   );
 }

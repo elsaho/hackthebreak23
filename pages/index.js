@@ -174,4 +174,3 @@ function onSurpriseClick() {
     </div>
   );
 }
-

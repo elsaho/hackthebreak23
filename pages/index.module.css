@@ -59,7 +59,7 @@
 }
 
 .main input[type="button"] {
-  padding: 12px 0;
+  padding: 12px 16px;
   color: #FFFFF0;
   background-color: #95C8D8;
   border: none;
@@ -78,7 +78,7 @@
 }
 
 .main input[type="submit"] {
-  padding: 12px 0;
+  padding: 12px 16px;
   color: #FFFFF0;
   background-color: #95C8D8;
   border: none;

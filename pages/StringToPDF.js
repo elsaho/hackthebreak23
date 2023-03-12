@@ -45,10 +45,14 @@ class StringToPDF extends React.Component {
 
   render() {
     return (
-      <div>
-        <textarea value={this.state.stringToConvert} onChange={this.handleStringChange} />
-        <button onClick={this.handleDownloadPDF}>Download as PDF</button>
-      </div>
+      <div className="container">
+  <div>
+    <textarea id="box" value={this.state.stringToConvert} onChange={this.handleStringChange} />
+    <br></br>
+    <button onClick={this.handleDownloadPDF}>Download as PDF</button>
+  </div>
+</div>
+  
     );
   }
 }

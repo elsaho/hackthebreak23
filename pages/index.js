@@ -111,7 +111,7 @@ function onSurpriseClick() {
 
   return (
       // <div style={{backgroundColor: '#FFFFF0'}}>
-      <div>
+      <div id="all" style={{backgroundColor: '#FFFFF0'}}>
       <Head>
         <title>Cover Letter Generator</title>
         <link rel="icon" href="/favicon.png" />
@@ -165,11 +165,11 @@ function onSurpriseClick() {
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
           <br></br>
           <input type="submit" value="Generate cover letter"/>
-          <br></br>
-          <StringToPDFAndWord text= {result}/>
         </form>
+        <br></br>
         <StringToPDF stringToConvert= {result}/>
       </main>
+      
     </div>
   );
 }

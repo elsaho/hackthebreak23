@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
+import StringToPDFAndWord from './StringToPDF';
 
 export default function Home() {
   const [jobTitleInput, setJobTitleInput] = useState("");
@@ -109,7 +110,8 @@ function onSurpriseClick() {
 
 
   return (
-    <div>
+      // <div style={{backgroundColor: '#FFFFF0'}}>
+      <div>
       <Head>
         <title>Cover Letter Generator</title>
         <link rel="icon" href="/favicon.png" />
@@ -164,6 +166,7 @@ function onSurpriseClick() {
           <br></br>
           <input type="submit" value="Generate cover letter"/>
         </form>
+        <StringToPDFAndWord />
         <div className={styles.result}>{result}</div>
       </main>
     </div>

@@ -146,7 +146,7 @@ return (
     </Head>
     <main className={styles.main}>
       <Icon
-        src="https://cdn.discordapp.com/attachments/1030235742963769366/1084359941583814696/favicon-32x32.png"
+        src="./favicon-32x32.png"
         className="cowboy"
         alt="cowboy emoji"
       />

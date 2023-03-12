@@ -59,7 +59,7 @@ export default function Home() {
     }
   }
 
-//Randomizer: Generate random job title
+// Randomizer: Generate random job title
 function randomJobTitle() {
   const jobTitles = ["Software Engineer", "Piano Teacher", "Guest Experience Expert", "Baker", "Pro Gamer"];
   const randomIndex = Math.floor(Math.random() * jobTitles.length);
@@ -97,13 +97,14 @@ function randomName() {
 }
 
 function onSurpriseClick() {
-  setJobTitleInput(randomJobTitle);
-  setSkillInput(randomSkill);
-  setPositionInput(randomPosition);
-  setDurationInput(randomDuration);
-  setDescriptionInput(randomDescription);
-  setNameInput(randomName);
+  setJobTitleInput(randomJobTitle());
+  setSkillInput(randomSkill());
+  setPositionInput(randomPosition());
+  setDurationInput(randomDuration());
+  setDescriptionInput(randomDescription());
+  setNameInput(randomName());
 }
+
 
 
   return (
@@ -158,7 +159,7 @@ function onSurpriseClick() {
             value={nameInput}
             onChange={(e) => setNameInput(e.target.value)}
           />
-          <input type="button" value="Generate cover letter" />
+          <input type="submit" value="Generate cover letter"/>
           <br></br>
           <input type="button" value="Surprise me!" onClick={onSurpriseClick} />
         </form>
